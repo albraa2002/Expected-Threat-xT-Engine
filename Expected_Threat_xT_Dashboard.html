@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>xT Spatial Engine — Al Ahly SC</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-page:  #060a10;
+      --bg-card:  #0d1520;
+      --accent:   #00f5d4;
+      --accent2:  #f72585;
+      --text:     #e0e8f0;
+      --prog:     #39ff14;
+      --neg:      #ff3131;
+    }
+
+    body {
+      background: var(--bg-page);
+      color: var(--text);
+      font-family: "IBM Plex Mono", monospace;
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    /* ── TOP HEADER ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px 14px;
+      border-bottom: 1px solid rgba(0,245,212,0.15);
+      background: linear-gradient(90deg, rgba(0,245,212,0.04) 0%, transparent 60%);
+    }
+
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    .badge {
+      background: var(--accent);
+      color: var(--bg-page);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .title-block h1 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+    .title-block h2 {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 5px;
+      color: #556677;
+      margin-top: 2px;
+    }
+
+    .header-meta {
+      text-align: right;
+      font-size: 9px;
+      color: #445566;
+      letter-spacing: 2px;
+      line-height: 1.7;
+    }
+
+    /* ── KPI STRIP ── */
+    .kpi-strip {
+      display: flex;
+      gap: 1px;
+      padding: 0 32px;
+      margin: 20px 0;
+    }
+    .kpi-card {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid rgba(0,245,212,0.1);
+      border-top: 2px solid var(--accent);
+      padding: 14px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .kpi-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,245,212,0.04), transparent);
+      pointer-events: none;
+    }
+    .kpi-label {
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: #556677;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .kpi-value {
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .kpi-sub {
+      font-size: 9px;
+      color: #445566;
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+
+    /* ── CHART CONTAINER ── */
+    .chart-wrapper {
+      margin: 0 24px 20px;
+      background: var(--bg-card);
+      border: 1px solid rgba(0,245,212,0.08);
+      border-radius: 4px;
+      padding: 8px;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+    }
+
+    /* ── LEGEND STRIP ── */
+    .legend-strip {
+      display: flex;
+      gap: 24px;
+      padding: 12px 32px;
+      border-top: 1px solid rgba(0,245,212,0.08);
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #556677;
+    }
+    .leg-item { display: flex; align-items: center; gap: 8px; }
+    .leg-dot { width: 10px; height: 4px; border-radius: 2px; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 14px 32px;
+      border-top: 1px solid rgba(0,245,212,0.08);
+      font-size: 8px;
+      color: #334455;
+      letter-spacing: 2px;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <div class="badge">xT ENGINE</div>
+      <div class="title-block">
+        <h1>EXPECTED THREAT SPATIAL ENGINE</h1>
+        <h2>AL AHLY SC — PASS EVALUATION SYSTEM v1.0</h2>
+      </div>
+    </div>
+    <div class="header-meta">
+      GRID: 12×8 CELLS<br>
+      PITCH: 105m × 68m<br>
+      PASSES ANALYSED: 93<br>
+      MODEL: SYNTHETIC xT
+    </div>
+  </header>
+
+  <!-- KPI STRIP -->
+  <div class="kpi-strip">
+    <div class="kpi-card">
+      <div class="kpi-label">Total Passes Tracked</div>
+      <div class="kpi-value">93</div>
+      <div class="kpi-sub">3 playmakers</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Progressive Passes</div>
+      <div class="kpi-value" style="color:var(--prog)">51</div>
+      <div class="kpi-sub">xT_Added &ge; 0</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Negative / Safe Passes</div>
+      <div class="kpi-value" style="color:var(--neg)">42</div>
+      <div class="kpi-sub">xT_Added &lt; 0</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Total xT Generated</div>
+      <div class="kpi-value">+6.812</div>
+      <div class="kpi-sub">sum across all passes</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Top Progressive Passer</div>
+      <div class="kpi-value" style="font-size:14px; padding-top:4px;">
+        EMAM
+      </div>
+      <div class="kpi-sub">
+        +2.734 xT added
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Avg xT / Pass</div>
+      <div class="kpi-value">+0.0733</div>
+      <div class="kpi-sub">all players</div>
+    </div>
+  </div>
+
+  <!-- MAIN CHART -->
+  <div class="chart-wrapper">
+    <div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.4.0.min.js" integrity="sha256-KEmPoupLpFyGMyGAiOsiNDbKDKAvxXAn/W+oQa0ZAfk=" crossorigin="anonymous"></script>                <div id="8ef2411c-2db6-4413-8da8-dccbba1c215a" class="plotly-graph-div" style="height:920px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("8ef2411c-2db6-4413-8da8-dccbba1c215a")) {                    Plotly.newPlot(                        "8ef2411c-2db6-4413-8da8-dccbba1c215a",                        [{"colorbar":{"bgcolor":"rgba(0,0,0,0)","bordercolor":"rgba(0,0,0,0)","len":0.5,"thickness":12,"tickfont":{"color":"#e0e8f0","family":"IBM Plex Mono","size":9},"title":{"font":{"color":"#e0e8f0","family":"IBM Plex Mono","size":11},"text":"xT Value"},"x":1.02},"colorscale":[[0.0,"#000004"],[0.1111111111111111,"#1b0c41"],[0.2222222222222222,"#4a0c6b"],[0.3333333333333333,"#781c6d"],[0.4444444444444444,"#a52c60"],[0.5555555555555556,"#cf4446"],[0.6666666666666666,"#ed6925"],[0.7777777777777778,"#fb9b06"],[0.8888888888888888,"#f7d13d"],[1.0,"#fcffa4"]],"hovertemplate":"xT: %{z:.3f}\u003cextra\u003e\u003c\u002fextra\u003e","name":"xT Grid","opacity":0.55,"showscale":true,"x":[4.375,13.125,21.875,30.625,39.375,48.125,56.875,65.625,74.375,83.125,91.875,100.625],"y":[4.25,12.75,21.25,29.75,38.25,46.75,55.25,63.75],"z":{"dtype":"f8","bdata":"jbbN\u002fbUVgD+aY2yDADeIP062Pa0jOpI\u002fKzsmAqJwmz+w0HabnKekP1wfaUE6GK8\u002f\u002fInpSttntz\u002fCnltLN57BP\u002fepwlLWLo4\u002fhLytki24lj9psbp7+hmhP84pDEjSvqk\u002fpGl+n+sNgj+Ymew\u002fEC6LP9Wik9yAdZQ\u002fGoF+vsrMnj+nlooMEy+nP8g4wIJ5c7E\u002fvVGtp41Fuj9st0zCfMbDPxJZ9msoZrA\u002fVQt9XhywuD8Y3yoITZXCP+L2SjLf+cs\u002fuhwvQSEGhD+Yz2z8HyWOP16P6QvesJY\u002fhmNrvXkUoT+dXJ59ibapP+Phy+TVWrM\u002ffhlxBEAjvT8W0D05wu7FPwcAyCSf1sU\u002foZ27WjJw0D\u002f5lkZFOb\u002fYP2g\u002ffz+toOI\u002f0c\u002ff4lb+hT\u002fKgnbcF46QP+R7Pzs77Jg\u002ffoaXG47Coj+UIrLu\u002fz2sP\u002f6K10YyQrU\u002foHCaMHkAwD\u002fA6C6wBxfIP\u002f3Ugm3m0dE\u002ff7oKvbTT2j833xg2fTHkP2ZmZmZmZu4\u002f0c\u002ff4lb+hT\u002fKgnbcF46QP+R7Pzs77Jg\u002ffoaXG47Coj+UIrLu\u002fz2sP\u002f6K10YyQrU\u002foHCaMHkAwD\u002fA6C6wBxfIP\u002f3Ugm3m0dE\u002ff7oKvbTT2j833xg2fTHkP2ZmZmZmZu4\u002fuhwvQSEGhD+Yz2z8HyWOP16P6QvesJY\u002fhmNrvXkUoT+dXJ59ibapP+Phy+TVWrM\u002ffhlxBEAjvT8W0D05wu7FPwcAyCSf1sU\u002foZ27WjJw0D\u002f5lkZFOb\u002fYP2g\u002ffz+toOI\u002fpGl+n+sNgj+Ymew\u002fEC6LP9Wik9yAdZQ\u002fGoF+vsrMnj+nlooMEy+nP8g4wIJ5c7E\u002fvVGtp41Fuj9st0zCfMbDPxJZ9msoZrA\u002fVQt9XhywuD8Y3yoITZXCP+L2SjLf+cs\u002fjbbN\u002fbUVgD+aY2yDADeIP062Pa0jOpI\u002fKzsmAqJwmz+w0HabnKekP1wfaUE6GK8\u002f\u002fInpSttntz\u002fCnltLN57BP\u002fepwlLWLo4\u002fhLytki24lj9psbp7+hmhP84pDEjSvqk\u002f","shape":"8, 12"},"zmax":0.95,"zmin":0,"type":"heatmap","xaxis":"x","yaxis":"y"},{"hoverinfo":"skip","line":{"color":"#39ff14","dash":"solid","width":1.6},"mode":"lines","name":"Progressive Pass (xT+)","opacity":0.7,"x":[72.78,97.75,null,32.61,57.64,null,73.65,88.95,null,43.69,64.49,null,36.28,55.44,null,37.67,71.4,null,44.03,67.69,null,77.63,54.74,null,42.21,61.13,null,36.34,48.21,null,77.42,65.25,null,69.28,63.01,null,62.83,95.01,null,53.52,64.16,null,58.64,81.35,null,48.47,64.19,null,37.25,67.46,null,39.99,58.44,null,57.43,68.72,null,58.45,81.85,null,30.75,46.41,null,61.09,94.51,null,35.11,67.04,null,70.37,96.2,null,34.57,44.69,null,61.14,76.74,null,73.79,104.0,null,87.47,75.06,null,47.33,65.25,null,72.13,96.38,null,89.45,74.09,null,79.56,56.29,null,65.92,93.47,null,50.95,68.12,null,31.68,50.69,null,53.91,79.85,null,33.53,67.6,null,68.5,90.35,null,68.54,82.62,null,31.19,64.7,null,58.95,82.59,null,73.25,88.15,null,30.82,57.9,null,61.35,93.29,null,70.61,101.28,null,43.19,70.01,null,78.43,63.54,null,49.87,68.64,null,64.27,76.8,null,74.4,93.66,null,30.51,41.92,null],"y":[46.06,35.74,null,53.04,59.28,null,51.29,41.74,null,35.29,29.02,null,23.19,21.87,null,11.38,25.35,null,35.04,25.59,null,56.85,58.81,null,51.09,44.52,null,49.71,64.32,null,11.85,4.17,null,25.21,21.43,null,41.15,40.32,null,30.23,18.47,null,24.35,36.57,null,47.29,34.6,null,56.34,60.35,null,14.23,27.52,null,34.14,27.5,null,40.94,28.65,null,34.63,38.98,null,28.11,17.24,null,56.08,48.82,null,54.82,49.99,null,42.5,32.33,null,41.9,48.27,null,28.44,32.38,null,55.57,45.88,null,52.26,42.34,null,44.19,32.11,null,15.28,22.83,null,53.09,53.31,null,41.8,50.67,null,36.22,38.94,null,50.78,39.59,null,36.11,42.9,null,9.32,19.4,null,44.59,32.53,null,42.25,29.37,null,38.46,40.72,null,31.83,45.07,null,55.08,42.16,null,12.91,1.0,null,40.71,47.76,null,34.27,28.87,null,25.09,32.66,null,12.74,3.89,null,54.16,42.67,null,40.15,27.67,null,27.46,36.85,null,32.37,20.93,null],"type":"scatter","xaxis":"x","yaxis":"y"},{"hoverinfo":"skip","line":{"color":"#ff3131","dash":"dot","width":1.6},"mode":"lines","name":"Negative\u002fSafe Pass (xT\u2212)","opacity":0.7,"x":[45.98,29.13,null,51.75,33.07,null,52.28,85.02,null,39.87,33.96,null,45.93,24.62,null,62.1,86.13,null,79.2,56.35,null,84.29,77.08,null,66.81,76.98,null,53.35,72.44,null,48.85,37.83,null,48.18,33.39,null,60.25,76.19,null,52.64,46.83,null,79.95,64.35,null,62.67,94.85,null,39.63,16.66,null,44.64,70.88,null,66.26,53.9,null,62.65,47.79,null,50.44,32.53,null,58.55,34.28,null,73.34,61.15,null,53.59,46.71,null,64.65,90.22,null,63.4,42.49,null,57.49,49.36,null,62.16,79.16,null,65.49,52.1,null,64.1,77.0,null,51.31,72.15,null,58.58,77.94,null,68.02,98.38,null,50.51,30.5,null,57.69,37.17,null,82.21,62.2,null,56.41,33.3,null,72.75,97.09,null,39.0,19.88,null,89.23,76.7,null,65.71,42.59,null,59.21,83.8,null],"y":[34.74,25.67,null,13.08,11.88,null,9.79,2.55,null,18.19,14.7,null,8.29,12.42,null,47.56,55.69,null,17.7,18.49,null,24.54,19.09,null,52.76,53.08,null,44.56,58.71,null,33.86,29.55,null,15.53,25.25,null,47.6,54.45,null,17.7,19.52,null,36.87,31.71,null,54.65,63.05,null,16.4,18.53,null,46.82,57.29,null,12.87,8.18,null,38.0,31.9,null,9.26,2.81,null,58.27,65.33,null,44.53,40.4,null,27.53,29.1,null,19.22,6.78,null,24.79,20.21,null,17.01,12.02,null,42.33,55.98,null,39.81,34.76,null,8.75,1.0,null,17.01,13.96,null,10.36,14.13,null,9.21,2.67,null,17.23,23.36,null,27.34,24.16,null,30.31,35.4,null,8.56,1.0,null,57.43,61.39,null,50.74,42.36,null,47.18,38.85,null,30.06,22.28,null,46.79,60.66,null],"type":"scatter","xaxis":"x","yaxis":"y"},{"customdata":[["Emam Ashour",0.7794],["Emam Ashour",0.0725],["Emam Ashour",0.567],["Emam Ashour",0.133],["Emam Ashour",0.0636],["Emam Ashour",0.1253],["Emam Ashour",0.1052],["Emam Ashour",0.0386],["Emam Ashour",0.0685],["Emam Ashour",0.0105],["Emam Ashour",0.0736],["Emam Ashour",0.0],["Emam Ashour",0.4428],["Emam Ashour",0.0463],["Emam Ashour",0.3054],["Emam Ashour",0.1126],["Emam Ashour",0.0924],["Emam Ashour",0.0797],["Emam Ashour",0.0632],["Emam Ashour",0.2942],["Emam Ashour",0.0464],["Ali Maaloul",0.2617],["Ali Maaloul",0.1261],["Ali Maaloul",0.3226],["Ali Maaloul",0.0497],["Ali Maaloul",0.0456],["Ali Maaloul",0.6716],["Ali Maaloul",0.0742],["Ali Maaloul",0.12],["Ali Maaloul",0.7794],["Ali Maaloul",0.0254],["Ali Maaloul",0.0062],["Ali Maaloul",0.1985],["Ali Maaloul",0.1052],["Ali Maaloul",0.0497],["Ali Maaloul",0.1318],["Ali Maaloul",0.1413],["Hussein El Shahat",0.4597],["Hussein El Shahat",0.231],["Hussein El Shahat",0.1516],["Hussein El Shahat",0.1318],["Hussein El Shahat",0.567],["Hussein El Shahat",0.0614],["Hussein El Shahat",0.1985],["Hussein El Shahat",0.6716],["Hussein El Shahat",0.2282],["Hussein El Shahat",0.0736],["Hussein El Shahat",0.1032],["Hussein El Shahat",0.0902],["Hussein El Shahat",0.3526],["Hussein El Shahat",0.0136]],"hovertemplate":"\u003cb\u003e%{customdata[0]}\u003c\u002fb\u003e\u003cbr\u003exT Added: %{customdata[1]:.4f}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#39ff14","line":{"color":"white","width":0.5},"opacity":0.85,"size":6,"symbol":"arrow-up"},"mode":"markers","name":"End (Prog)","x":{"dtype":"f8","bdata":"AAAAAABwWEBSuB6F69FMQM3MzMzMPFZAj8L1KFwfUEC4HoXrUbhLQJqZmZmZ2VFAXI\u002fC9SjsUEAfhetRuF5LQHE9CtejkE5AexSuR+EaSEAAAAAAAFBQQOF6FK5HgU9AcT0K16PAV0AK16NwPQpQQGZmZmZmVlRAXI\u002fC9SgMUEA9CtejcN1QQLgehetROE1ArkfhehQuUUBmZmZmZnZUQBSuR+F6NEdAcT0K16OgV0DD9Shcj8JQQM3MzMzMDFhAuB6F61FYRkCPwvUoXC9TQAAAAAAAAFpApHA9CtfDUkAAAAAAAFBQQLgehetRGFhA9ihcj8KFUkCF61G4HiVMQK5H4XoUXldASOF6FK4HUUC4HoXrUVhJQGZmZmZm9lNAZmZmZmbmUEBmZmZmZpZWQEjhehSup1RAzczMzMwsUED2KFyPwqVUQJqZmZmZCVZAMzMzMzPzTEDD9Shcj1JXQFK4HoXrUVlAcT0K16OAUUCF61G4HsVPQClcj8L1KFFAMzMzMzMzU0AK16NwPWpXQPYoXI\u002fC9URA"},"y":{"dtype":"f8","bdata":"H4XrUbjeQUCkcD0K16NNQB+F61G43kRAhetRuB4FPUAfhetRuN41QJqZmZmZWTlA16NwPQqXOUBI4XoUrmdNQMP1KFyPQkZAFK5H4XoUUECuR+F6FK4QQK5H4XoUbjVAKVyPwvUoREC4HoXrUXgyQClcj8L1SEJAzczMzMxMQUDNzMzMzCxOQIXrUbgehTtAAAAAAACAO0BmZmZmZqY8QD0K16NwfUNAPQrXo3A9MUApXI\u002fC9WhIQB+F61G4\u002fkhACtejcD0qQEDD9ShcjyJIQHE9CtejMEBAcT0K16PwRkDsUbgehStFQK5H4XoUDkBAFK5H4XrUNkBI4XoUrqdKQPYoXI\u002fCVUlAuB6F61F4Q0DsUbgehctDQDMzMzMzc0VAZmZmZmZmM0CkcD0K10NAQB+F61G4Xj1AXI\u002fC9ShcREApXI\u002fC9YhGQBSuR+F6FEVAAAAAAAAA8D\u002fhehSuR+FHQB+F61G43jxAFK5H4XpUQEAfhetRuB4PQPYoXI\u002fCVUVA7FG4HoWrO0DNzMzMzGxCQK5H4XoU7jRA"},"type":"scatter","xaxis":"x","yaxis":"y"},{"customdata":[["Emam Ashour",-0.0464],["Emam Ashour",-0.0381],["Emam Ashour",-0.046],["Emam Ashour",-0.0201],["Emam Ashour",-0.0408],["Emam Ashour",-0.0749],["Emam Ashour",-0.143],["Emam Ashour",-0.0862],["Emam Ashour",-0.0904],["Emam Ashour",-0.0498],["Emam Ashour",-0.0279],["Emam Ashour",-0.0348],["Emam Ashour",-0.0498],["Emam Ashour",-0.0382],["Ali Maaloul",-0.231],["Ali Maaloul",-0.1211],["Ali Maaloul",-0.0306],["Ali Maaloul",-0.0115],["Ali Maaloul",-0.0631],["Ali Maaloul",-0.1052],["Ali Maaloul",-0.0414],["Ali Maaloul",-0.0758],["Ali Maaloul",-0.0456],["Ali Maaloul",-0.042],["Ali Maaloul",-0.1379],["Ali Maaloul",-0.1211],["Ali Maaloul",-0.0457],["Ali Maaloul",-0.0918],["Hussein El Shahat",-0.1052],["Hussein El Shahat",-0.1398],["Hussein El Shahat",-0.0115],["Hussein El Shahat",-0.0386],["Hussein El Shahat",-0.1042],["Hussein El Shahat",-0.0422],["Hussein El Shahat",-0.0748],["Hussein El Shahat",-0.231],["Hussein El Shahat",-0.0758],["Hussein El Shahat",-0.0138],["Hussein El Shahat",-0.0259],["Hussein El Shahat",-0.1082],["Hussein El Shahat",-0.138],["Hussein El Shahat",-0.0916]],"hovertemplate":"\u003cb\u003e%{customdata[0]}\u003c\u002fb\u003e\u003cbr\u003exT Added: %{customdata[1]:.4f}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#ff3131","line":{"color":"white","width":0.5},"opacity":0.85,"size":6,"symbol":"arrow-down"},"mode":"markers","name":"End (Neg)","x":{"dtype":"f8","bdata":"4XoUrkchPUApXI\u002fC9YhAQOF6FK5HQVVAexSuR+H6QEAfhetRuJ44QLgehetRiFVAzczMzMwsTECF61G4HkVTQB+F61G4PlNAXI\u002fC9SgcUkAK16NwPepCQFK4HoXrsUBAXI\u002fC9SgMU0AK16NwPWpHQGZmZmZmFlBAZmZmZma2V0ApXI\u002fC9agwQLgehetRuFFAMzMzMzPzSkCF61G4HuVHQKRwPQrXQ0BApHA9CtcjQUAzMzMzM5NOQHsUrkfhWkdArkfhehSOVkAfhetRuD5FQK5H4XoUrkhACtejcD3KU0DNzMzMzAxKQAAAAAAAQFNAmpmZmZkJUkBcj8L1KHxTQLgehetRmFhAAAAAAACAPkD2KFyPwpVCQJqZmZmZGU9AZmZmZmamQED2KFyPwkVYQOF6FK5H4TNAzczMzMwsU0DsUbgehUtFQDMzMzMz81RA"},"y":{"dtype":"f8","bdata":"7FG4HoWrOUDD9Shcj8InQGZmZmZmZgRAZmZmZmZmLUDXo3A9CtcoQLgehetR2EtAPQrXo3B9MkDXo3A9ChczQArXo3A9ikpAexSuR+FaTUDNzMzMzIw9QAAAAAAAQDlAmpmZmZk5S0CF61G4HoUzQPYoXI\u002fCtT9AZmZmZmaGT0BI4XoUrocyQIXrUbgepUxAXI\u002fC9ShcIEBmZmZmZuY\u002fQHsUrkfhegZAhetRuB5VUEAzMzMzMzNEQJqZmZmZGT1AH4XrUbgeG0D2KFyPwjU0QArXo3A9CihAPQrXo3D9S0DhehSuR2FBQAAAAAAAAPA\u002f7FG4HoXrK0DD9Shcj0IsQFyPwvUoXAVAXI\u002fC9ShcN0ApXI\u002fC9Sg4QDMzMzMzs0FAAAAAAAAA8D9SuB6F67FOQK5H4XoULkVAzczMzMxsQ0BI4XoUrkc2QBSuR+F6VE5A"},"type":"scatter","xaxis":"x","yaxis":"y"},{"customdata":{"dtype":"f8","bdata":"AAAAAAAAPkCC4seYu5awPwAAAAAAADxA\u002fYf029eBsz8AAAAAAIBBQDxO0ZFc\u002frM\u002f","shape":"3, 2"},"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003eTotal xT Added: \u003cb\u003e%{x:.4f}\u003c\u002fb\u003e\u003cbr\u003ePasses: %{customdata[0]}\u003cbr\u003eAvg xT\u002fPass: %{customdata[1]:.4f}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["#39ff14","#39ff14","#39ff14"],"line":{"color":"rgba(255,255,255,0.15)","width":0.8},"opacity":0.88},"name":"Total xT Added","orientation":"h","text":["+1.945","+2.133","+2.734"],"textfont":{"color":"#e0e8f0","family":"IBM Plex Mono","size":11},"textposition":"outside","x":{"dtype":"f8","bdata":"Ad4CCYof\u002fz+MSuoENBEBQDtwzojS3gVA"},"y":["Ali Maaloul","Hussein El Shahat","Emam Ashour"],"type":"bar","xaxis":"x2","yaxis":"y2"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"showgrid":false,"zeroline":false,"showticklabels":false,"showline":false,"range":[-3,108.0]},"yaxis":{"anchor":"x","domain":[0.3232,1.0],"showgrid":false,"zeroline":false,"showticklabels":false,"showline":false,"range":[-3,71.0],"scaleanchor":"x","scaleratio":1},"xaxis2":{"anchor":"y2","domain":[0.0,1.0],"tickfont":{"color":"#e0e8f0","size":9,"family":"IBM Plex Mono"},"title":{"font":{"color":"#8899aa","size":10,"family":"IBM Plex Mono"},"text":"Total xT Added"},"showgrid":true,"gridcolor":"rgba(255,255,255,0.07)","zeroline":true,"zerolinecolor":"rgba(255,255,255,0.2)","zerolinewidth":1},"yaxis2":{"anchor":"x2","domain":[0.0,0.25],"tickfont":{"color":"#e0e8f0","size":11,"family":"IBM Plex Mono"},"showgrid":false},"title":{"text":"\u003cspan style='font-family:IBM Plex Mono; color:#00f5d4; font-size:20px; letter-spacing:2px;'\u003e\u25c8 EXPECTED THREAT (xT) SPATIAL ENGINE\u003c\u002fspan\u003e\u003cbr\u003e\u003cspan style='font-family:IBM Plex Mono; color:#8899aa; font-size:12px; letter-spacing:4px;'\u003eAL AHLY SC \u2014 PASS EVALUATION SYSTEM\u003c\u002fspan\u003e","x":0.5,"y":0.99,"xanchor":"center","yanchor":"top"},"font":{"family":"IBM Plex Mono","color":"#e0e8f0","size":11},"legend":{"font":{"size":10,"color":"#e0e8f0","family":"IBM Plex Mono"},"bgcolor":"rgba(13,21,32,0.85)","bordercolor":"#00f5d4","borderwidth":1,"x":0.01,"y":0.99,"xanchor":"left","yanchor":"top","tracegroupgap":4},"margin":{"l":20,"r":80,"t":80,"b":20},"height":920,"paper_bgcolor":"#060a10","plot_bgcolor":"#0a1a10","annotations":[{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":72.78,"axref":"x","ay":46.06,"ayref":"y","showarrow":true,"x":97.75,"xref":"x","y":35.74,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":32.61,"axref":"x","ay":53.04,"ayref":"y","showarrow":true,"x":57.64,"xref":"x","y":59.28,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":73.65,"axref":"x","ay":51.29,"ayref":"y","showarrow":true,"x":88.95,"xref":"x","y":41.74,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":43.69,"axref":"x","ay":35.29,"ayref":"y","showarrow":true,"x":64.49,"xref":"x","y":29.02,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":36.28,"axref":"x","ay":23.19,"ayref":"y","showarrow":true,"x":55.44,"xref":"x","y":21.87,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":45.98,"axref":"x","ay":34.74,"ayref":"y","showarrow":true,"x":29.13,"xref":"x","y":25.67,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":37.67,"axref":"x","ay":11.38,"ayref":"y","showarrow":true,"x":71.4,"xref":"x","y":25.35,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":51.75,"axref":"x","ay":13.08,"ayref":"y","showarrow":true,"x":33.07,"xref":"x","y":11.88,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":52.28,"axref":"x","ay":9.79,"ayref":"y","showarrow":true,"x":85.02,"xref":"x","y":2.55,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":44.03,"axref":"x","ay":35.04,"ayref":"y","showarrow":true,"x":67.69,"xref":"x","y":25.59,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":77.63,"axref":"x","ay":56.85,"ayref":"y","showarrow":true,"x":54.74,"xref":"x","y":58.81,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":39.87,"axref":"x","ay":18.19,"ayref":"y","showarrow":true,"x":33.96,"xref":"x","y":14.7,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":42.21,"axref":"x","ay":51.09,"ayref":"y","showarrow":true,"x":61.13,"xref":"x","y":44.52,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":36.34,"axref":"x","ay":49.71,"ayref":"y","showarrow":true,"x":48.21,"xref":"x","y":64.32,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":45.93,"axref":"x","ay":8.29,"ayref":"y","showarrow":true,"x":24.62,"xref":"x","y":12.42,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":77.42,"axref":"x","ay":11.85,"ayref":"y","showarrow":true,"x":65.25,"xref":"x","y":4.17,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":69.28,"axref":"x","ay":25.21,"ayref":"y","showarrow":true,"x":63.01,"xref":"x","y":21.43,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":62.83,"axref":"x","ay":41.15,"ayref":"y","showarrow":true,"x":95.01,"xref":"x","y":40.32,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":62.1,"axref":"x","ay":47.56,"ayref":"y","showarrow":true,"x":86.13,"xref":"x","y":55.69,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":53.52,"axref":"x","ay":30.23,"ayref":"y","showarrow":true,"x":64.16,"xref":"x","y":18.47,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":58.64,"axref":"x","ay":24.35,"ayref":"y","showarrow":true,"x":81.35,"xref":"x","y":36.57,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":48.47,"axref":"x","ay":47.29,"ayref":"y","showarrow":true,"x":64.19,"xref":"x","y":34.6,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":37.25,"axref":"x","ay":56.34,"ayref":"y","showarrow":true,"x":67.46,"xref":"x","y":60.35,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":79.2,"axref":"x","ay":17.7,"ayref":"y","showarrow":true,"x":56.35,"xref":"x","y":18.49,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":84.29,"axref":"x","ay":24.54,"ayref":"y","showarrow":true,"x":77.08,"xref":"x","y":19.09,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":66.81,"axref":"x","ay":52.76,"ayref":"y","showarrow":true,"x":76.98,"xref":"x","y":53.08,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":39.99,"axref":"x","ay":14.23,"ayref":"y","showarrow":true,"x":58.44,"xref":"x","y":27.52,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":53.35,"axref":"x","ay":44.56,"ayref":"y","showarrow":true,"x":72.44,"xref":"x","y":58.71,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":48.85,"axref":"x","ay":33.86,"ayref":"y","showarrow":true,"x":37.83,"xref":"x","y":29.55,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":57.43,"axref":"x","ay":34.14,"ayref":"y","showarrow":true,"x":68.72,"xref":"x","y":27.5,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":48.18,"axref":"x","ay":15.53,"ayref":"y","showarrow":true,"x":33.39,"xref":"x","y":25.25,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":60.25,"axref":"x","ay":47.6,"ayref":"y","showarrow":true,"x":76.19,"xref":"x","y":54.45,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":58.45,"axref":"x","ay":40.94,"ayref":"y","showarrow":true,"x":81.85,"xref":"x","y":28.65,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":52.64,"axref":"x","ay":17.7,"ayref":"y","showarrow":true,"x":46.83,"xref":"x","y":19.52,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":30.75,"axref":"x","ay":34.63,"ayref":"y","showarrow":true,"x":46.41,"xref":"x","y":38.98,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":61.09,"axref":"x","ay":28.11,"ayref":"y","showarrow":true,"x":94.51,"xref":"x","y":17.24,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":35.11,"axref":"x","ay":56.08,"ayref":"y","showarrow":true,"x":67.04,"xref":"x","y":48.82,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":79.95,"axref":"x","ay":36.87,"ayref":"y","showarrow":true,"x":64.35,"xref":"x","y":31.71,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":70.37,"axref":"x","ay":54.82,"ayref":"y","showarrow":true,"x":96.2,"xref":"x","y":49.99,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":62.67,"axref":"x","ay":54.65,"ayref":"y","showarrow":true,"x":94.85,"xref":"x","y":63.05,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":39.63,"axref":"x","ay":16.4,"ayref":"y","showarrow":true,"x":16.66,"xref":"x","y":18.53,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":34.57,"axref":"x","ay":42.5,"ayref":"y","showarrow":true,"x":44.69,"xref":"x","y":32.33,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":61.14,"axref":"x","ay":41.9,"ayref":"y","showarrow":true,"x":76.74,"xref":"x","y":48.27,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":44.64,"axref":"x","ay":46.82,"ayref":"y","showarrow":true,"x":70.88,"xref":"x","y":57.29,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":66.26,"axref":"x","ay":12.87,"ayref":"y","showarrow":true,"x":53.9,"xref":"x","y":8.18,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":73.79,"axref":"x","ay":28.44,"ayref":"y","showarrow":true,"x":104.0,"xref":"x","y":32.38,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":62.65,"axref":"x","ay":38.0,"ayref":"y","showarrow":true,"x":47.79,"xref":"x","y":31.9,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":50.44,"axref":"x","ay":9.26,"ayref":"y","showarrow":true,"x":32.53,"xref":"x","y":2.81,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":87.47,"axref":"x","ay":55.57,"ayref":"y","showarrow":true,"x":75.06,"xref":"x","y":45.88,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":58.55,"axref":"x","ay":58.27,"ayref":"y","showarrow":true,"x":34.28,"xref":"x","y":65.33,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":47.33,"axref":"x","ay":52.26,"ayref":"y","showarrow":true,"x":65.25,"xref":"x","y":42.34,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":72.13,"axref":"x","ay":44.19,"ayref":"y","showarrow":true,"x":96.38,"xref":"x","y":32.11,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":89.45,"axref":"x","ay":15.28,"ayref":"y","showarrow":true,"x":74.09,"xref":"x","y":22.83,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":73.34,"axref":"x","ay":44.53,"ayref":"y","showarrow":true,"x":61.15,"xref":"x","y":40.4,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":79.56,"axref":"x","ay":53.09,"ayref":"y","showarrow":true,"x":56.29,"xref":"x","y":53.31,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":65.92,"axref":"x","ay":41.8,"ayref":"y","showarrow":true,"x":93.47,"xref":"x","y":50.67,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":53.59,"axref":"x","ay":27.53,"ayref":"y","showarrow":true,"x":46.71,"xref":"x","y":29.1,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":50.95,"axref":"x","ay":36.22,"ayref":"y","showarrow":true,"x":68.12,"xref":"x","y":38.94,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":31.68,"axref":"x","ay":50.78,"ayref":"y","showarrow":true,"x":50.69,"xref":"x","y":39.59,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":64.65,"axref":"x","ay":19.22,"ayref":"y","showarrow":true,"x":90.22,"xref":"x","y":6.78,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":53.91,"axref":"x","ay":36.11,"ayref":"y","showarrow":true,"x":79.85,"xref":"x","y":42.9,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":63.4,"axref":"x","ay":24.79,"ayref":"y","showarrow":true,"x":42.49,"xref":"x","y":20.21,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":33.53,"axref":"x","ay":9.32,"ayref":"y","showarrow":true,"x":67.6,"xref":"x","y":19.4,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":57.49,"axref":"x","ay":17.01,"ayref":"y","showarrow":true,"x":49.36,"xref":"x","y":12.02,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":62.16,"axref":"x","ay":42.33,"ayref":"y","showarrow":true,"x":79.16,"xref":"x","y":55.98,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":65.49,"axref":"x","ay":39.81,"ayref":"y","showarrow":true,"x":52.1,"xref":"x","y":34.76,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":64.1,"axref":"x","ay":8.75,"ayref":"y","showarrow":true,"x":77.0,"xref":"x","y":1.0,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":68.5,"axref":"x","ay":44.59,"ayref":"y","showarrow":true,"x":90.35,"xref":"x","y":32.53,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":51.31,"axref":"x","ay":17.01,"ayref":"y","showarrow":true,"x":72.15,"xref":"x","y":13.96,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":58.58,"axref":"x","ay":10.36,"ayref":"y","showarrow":true,"x":77.94,"xref":"x","y":14.13,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":68.54,"axref":"x","ay":42.25,"ayref":"y","showarrow":true,"x":82.62,"xref":"x","y":29.37,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":31.19,"axref":"x","ay":38.46,"ayref":"y","showarrow":true,"x":64.7,"xref":"x","y":40.72,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":58.95,"axref":"x","ay":31.83,"ayref":"y","showarrow":true,"x":82.59,"xref":"x","y":45.07,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":73.25,"axref":"x","ay":55.08,"ayref":"y","showarrow":true,"x":88.15,"xref":"x","y":42.16,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":30.82,"axref":"x","ay":12.91,"ayref":"y","showarrow":true,"x":57.9,"xref":"x","y":1.0,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":68.02,"axref":"x","ay":9.21,"ayref":"y","showarrow":true,"x":98.38,"xref":"x","y":2.67,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":61.35,"axref":"x","ay":40.71,"ayref":"y","showarrow":true,"x":93.29,"xref":"x","y":47.76,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":50.51,"axref":"x","ay":17.23,"ayref":"y","showarrow":true,"x":30.5,"xref":"x","y":23.36,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":57.69,"axref":"x","ay":27.34,"ayref":"y","showarrow":true,"x":37.17,"xref":"x","y":24.16,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":82.21,"axref":"x","ay":30.31,"ayref":"y","showarrow":true,"x":62.2,"xref":"x","y":35.4,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":70.61,"axref":"x","ay":34.27,"ayref":"y","showarrow":true,"x":101.28,"xref":"x","y":28.87,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":56.41,"axref":"x","ay":8.56,"ayref":"y","showarrow":true,"x":33.3,"xref":"x","y":1.0,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":72.75,"axref":"x","ay":57.43,"ayref":"y","showarrow":true,"x":97.09,"xref":"x","y":61.39,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":43.19,"axref":"x","ay":25.09,"ayref":"y","showarrow":true,"x":70.01,"xref":"x","y":32.66,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":78.43,"axref":"x","ay":12.74,"ayref":"y","showarrow":true,"x":63.54,"xref":"x","y":3.89,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":49.87,"axref":"x","ay":54.16,"ayref":"y","showarrow":true,"x":68.64,"xref":"x","y":42.67,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":64.27,"axref":"x","ay":40.15,"ayref":"y","showarrow":true,"x":76.8,"xref":"x","y":27.67,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":39.0,"axref":"x","ay":50.74,"ayref":"y","showarrow":true,"x":19.88,"xref":"x","y":42.36,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":74.4,"axref":"x","ay":27.46,"ayref":"y","showarrow":true,"x":93.66,"xref":"x","y":36.85,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":89.23,"axref":"x","ay":47.18,"ayref":"y","showarrow":true,"x":76.7,"xref":"x","y":38.85,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":65.71,"axref":"x","ay":30.06,"ayref":"y","showarrow":true,"x":42.59,"xref":"x","y":22.28,"yref":"y"},{"arrowcolor":"#39ff14","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":30.51,"axref":"x","ay":32.37,"ayref":"y","showarrow":true,"x":41.92,"xref":"x","y":20.93,"yref":"y"},{"arrowcolor":"#ff3131","arrowhead":3,"arrowsize":1.2,"arrowwidth":1.4,"ax":59.21,"axref":"x","ay":46.79,"ayref":"y","showarrow":true,"x":83.8,"xref":"x","y":60.66,"yref":"y"},{"font":{"color":"#556677","family":"IBM Plex Mono","size":9},"showarrow":false,"text":"\u25b8 xT GRID + PASS MAP","x":0.01,"xanchor":"left","xref":"paper","y":0.985,"yanchor":"top","yref":"paper"},{"font":{"color":"#556677","family":"IBM Plex Mono","size":9},"showarrow":false,"text":"\u25b8 PLAYER xT LEADERBOARD","x":0.01,"xanchor":"left","xref":"paper","y":0.265,"yanchor":"top","yref":"paper"},{"font":{"color":"#445566","family":"IBM Plex Mono","size":8},"showarrow":false,"text":"\u2190 DEFENSIVE THIRD","x":0.04,"xanchor":"left","xref":"paper","y":0.97,"yanchor":"top","yref":"paper"},{"font":{"color":"#00f5d4","family":"IBM Plex Mono","size":8},"showarrow":false,"text":"ATTACKING THIRD \u2192","x":0.96,"xanchor":"right","xref":"paper","y":0.97,"yanchor":"top","yref":"paper"}],"shapes":[{"fillcolor":"rgba(0,0,0,0)","line":{"color":"#2ecc71","width":1.2},"type":"rect","x0":0,"x1":105.0,"y0":0,"y1":68.0},{"line":{"color":"#2ecc71","width":1.2},"type":"line","x0":52.5,"x1":52.5,"y0":0,"y1":68.0},{"fillcolor":"rgba(0,0,0,0)","line":{"color":"#2ecc71","width":1.2},"type":"circle","x0":43.35,"x1":61.65,"y0":24.85,"y1":43.15},{"fillcolor":"#2ecc71","line":{"color":"#2ecc71","width":1},"type":"circle","x0":52.0,"x1":53.0,"y0":33.5,"y1":34.5},{"fillcolor":"rgba(0,0,0,0)","line":{"color":"#2ecc71","width":1.2},"type":"rect","x0":0,"x1":16.5,"y0":13.84,"y1":54.16},{"fillcolor":"rgba(0,0,0,0)","line":{"color":"#2ecc71","width":1.2},"type":"rect","x0":88.5,"x1":105.0,"y0":13.84,"y1":54.16},{"fillcolor":"rgba(0,0,0,0)","line":{"color":"#2ecc71","width":1.2},"type":"rect","x0":0,"x1":5.5,"y0":24.84,"y1":43.16},{"fillcolor":"rgba(0,0,0,0)","line":{"color":"#2ecc71","width":1.2},"type":"rect","x0":99.5,"x1":105.0,"y0":24.84,"y1":43.16},{"fillcolor":"rgba(0,0,0,0)","line":{"color":"#2ecc71","width":1.2},"type":"circle","x0":1.8499999999999996,"x1":20.15,"y0":24.85,"y1":43.15},{"fillcolor":"rgba(0,0,0,0)","line":{"color":"#2ecc71","width":1.2},"type":"circle","x0":84.85,"x1":103.15,"y0":24.85,"y1":43.15},{"fillcolor":"rgba(0,0,0,0)","line":{"color":"#2ecc71","width":1.2},"type":"rect","x0":-2.0,"x1":0,"y0":30.34,"y1":37.66},{"fillcolor":"rgba(0,0,0,0)","line":{"color":"#2ecc71","width":1.2},"type":"rect","x0":105.0,"x1":107.0,"y0":30.34,"y1":37.66}]},                        {"responsive": true}                    )                };            </script>        </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend-strip">
+    <div class="leg-item">
+      <div class="leg-dot" style="background:#39ff14;"></div>
+      PROGRESSIVE PASS (xT_ADDED &ge; 0)
+    </div>
+    <div class="leg-item">
+      <div class="leg-dot" style="background:#ff3131; border-top:2px dashed #ff3131;"></div>
+      SAFE / BACKWARD PASS (xT_ADDED &lt; 0)
+    </div>
+    <div class="leg-item">
+      <div class="leg-dot" style="background: linear-gradient(90deg,#000004,#fcffa4);"></div>
+      xT INTENSITY (INFERNO SCALE: LOW → HIGH)
+    </div>
+  </div>
+
+  <footer>
+    <span>◈ EXPECTED THREAT MODEL — SYNTHETIC SIMULATION — AL AHLY SC</span>
+    <span>BUILT WITH PLOTLY + PYTHON · LEAD FOOTBALL DATA SCIENTIST</span>
+  </footer>
+
+</body>
+</html>
